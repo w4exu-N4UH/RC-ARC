@@ -46,6 +46,12 @@ License exams will be available on Saturday at 10:00 AM. Bring a valid photo ID 
 - **VE Testing** -- License exams at 10:00 AM
 - **Door Prizes** -- Win great prizes throughout the day
 
+## Volunteers Needed
+
+We need volunteers to help make the hamfest a success! If you'd like to help out, please sign up using the link below.
+
+[Sign Up to Volunteer](https://www.signupgenius.com/go/10C0E4BADAD28A6FFC16-62288638-2026#/)
+
 ## Contact
 
 For vendor reservations, table availability, or questions, contact:
