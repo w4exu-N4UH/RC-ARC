@@ -30,12 +30,12 @@
 
 ##### Smoke Tests (after push to GitHub)
 
-- [ ] Visit [www.rowanars.net](https://www.rowanars.net) — site loads, no broken layout
-- [ ] Activities page — Google Calendar embed displays correctly and the "Add to Google Calendar" link works
-- [ ] Contact form — submit a test message and confirm it lands in the club SheetMonkey sheet
-- [ ] Membership form — submit a test entry and confirm it lands in the club SheetMonkey sheet
-- [ ] Elmer form — submit a test request and confirm it lands in the club SheetMonkey sheet
-- [ ] Check [GitHub Actions](https://github.com/w4exu-N4UH/RC-ARC/actions) — deploy workflow shows green checkmark
+- [x] Visit [www.rowanars.net](https://www.rowanars.net) — site loads, no broken layout
+- [x] Activities page — Google Calendar embed displays correctly and the "Add to Google Calendar" link works
+- [x] Contact form — submit a test message and confirm it lands in the club SheetMonkey sheet
+- [x] Membership form — submit a test entry and confirm it lands in the club SheetMonkey sheet
+- [x] Elmer form — submit a test request and confirm it lands in the club SheetMonkey sheet
+- [x] Check [GitHub Actions](https://github.com/w4exu-N4UH/RC-ARC/actions) — deploy workflow shows green checkmark
 
 #### Content Updates
 
