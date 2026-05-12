@@ -17,7 +17,7 @@ Most new content should be a **post**.
 ## Step-by-Step: Creating a New Post
 
 ### Step 1: Navigate to the Posts Folder
-1. Go to the [RC-ARC repository](https://github.com/mrbell-dev/RC-ARC)
+1. Go to the [RC-ARC repository](https://github.com/w4exu-N4UH/RC-ARC)
 2. Click on `content`
 3. Click on `posts`
 

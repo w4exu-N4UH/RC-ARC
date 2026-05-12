@@ -4,7 +4,7 @@ This guide shows you how to make changes to existing pages on the website.
 
 ## Finding the File to Edit
 
-1. Go to the [RC-ARC repository](https://github.com/mrbell-dev/RC-ARC)
+1. Go to the [RC-ARC repository](https://github.com/w4exu-N4UH/RC-ARC)
 2. Navigate to the `content/` folder
 3. Find the page you want to edit:
    - **Home page:** `_index.md`

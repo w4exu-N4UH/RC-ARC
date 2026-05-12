@@ -35,7 +35,7 @@ Prerequisites: Git, Go, and Hugo extended installed locally.
 
 ```bash
 # Clone the repository
-git clone git@github.com:mrbell-dev/RC-ARC.git
+git clone git@github.com:w4exu-N4UH/RC-ARC.git
 cd RC-ARC
 
 # Start local dev server with live reload
@@ -47,7 +47,7 @@ cd RC-ARC
 
 ## Documentation
 
-For non-technical users wanting to edit the website, see the [GitHub Wiki](https://github.com/mrbell-dev/RC-ARC/wiki) which includes guides for:
+For non-technical users wanting to edit the website, see the [GitHub Wiki](https://github.com/w4exu-N4UH/RC-ARC/wiki) which includes guides for:
 - Getting started with GitHub
 - Editing existing content
 - Creating new posts

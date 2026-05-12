@@ -56,7 +56,7 @@ For larger changes, you can run the website locally on your computer.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/mrbell-dev/RC-ARC.git
+   git clone https://github.com/w4exu-N4UH/RC-ARC.git
    cd RC-ARC
    ```
 

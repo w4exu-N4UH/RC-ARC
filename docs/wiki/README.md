@@ -8,7 +8,7 @@ Since the GitHub Wiki needs to be initialized first through the web interface, f
 
 ### Step 1: Initialize the Wiki
 
-1. Go to https://github.com/mrbell-dev/RC-ARC/wiki
+1. Go to https://github.com/w4exu-N4UH/RC-ARC/wiki
 2. Click "Create the first page"
 3. Copy the content from `Home.md` in this folder
 4. Click "Save Page"
@@ -41,7 +41,7 @@ If you're comfortable with Git, you can also:
 1. Initialize the wiki first (create Home page via web)
 2. Clone the wiki repo:
    ```bash
-   git clone git@github.com:mrbell-dev/RC-ARC.wiki.git
+   git clone git@github.com:w4exu-N4UH/RC-ARC.wiki.git
    ```
 3. Copy all `.md` files from this folder (except README.md) to the wiki repo
 4. Commit and push:

@@ -23,8 +23,7 @@ You can apply online using the form below, or [download the membership applicati
 
 ## Online Membership Application
 
-<!-- TODO: Set up SheetMonkey or Google Forms endpoint for this form -->
-<form id="membershipForm" action="https://api.sheetmonkey.io/form/tsXjKtuurQAQJFvwaGGvuX" method="post" class="mb-4">
+<form id="membershipForm" action="https://api.sheetmonkey.io/form/cCtbQ5HZdYrQS7fVKN4dZV" method="post" class="mb-4">
 
 ### Contact Information
 

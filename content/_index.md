@@ -44,3 +44,6 @@ Come say hello on the air or in person — visitors are always welcome!
 - [Live Feed](/pages/live-feed/) — Listen to our repeater on Broadcastify
 - [About RARS](/pages/about/) — Club history and information
 
+#### Last Updated
+
+May 12, 2026

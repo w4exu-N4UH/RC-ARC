@@ -33,9 +33,7 @@ Listen for us on the N4UH repeaters:
 
 ## Contact Form
 
-<!-- TODO: Switch form to RARS Google account (same account as calendar) -->
-<!-- TODO: Create webhook to watch Google Form submissions and send to Discord bot -->
-<form id="contactForm" action="https://api.sheetmonkey.io/form/tsXjKtuurQAQJFvwaGGvuX" method="post" class="mb-4">
+<form id="contactForm" action="https://api.sheetmonkey.io/form/cCtbQ5HZdYrQS7fVKN4dZV" method="post" class="mb-4">
   <div class="mb-3">
     <label class="form-label">Name:</label>
     <input type="text" name="Name" required class="form-control">
@@ -53,6 +51,7 @@ Listen for us on the N4UH repeaters:
     <label class="form-label">Message:</label>
     <textarea name="Message" rows="5" required class="form-control"></textarea>
   </div>
+  <input type="hidden" name="Form Type" value="Contact">
   <input type="hidden" name="Submitted" value="x-sheetmonkey-current-date-time">
   <div class="mb-3">
     <button type="submit" class="btn btn-primary">Send Message</button>

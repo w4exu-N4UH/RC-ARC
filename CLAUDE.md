@@ -104,7 +104,7 @@ The Chirpy theme filters many templates by `"Type" "post"`. Since content lives 
 
 ### Documentation
 - `docs/wiki/` - Source files for GitHub Wiki (documentation for non-technical users)
-- GitHub Wiki at https://github.com/mrbell-dev/RC-ARC/wiki
+- GitHub Wiki at https://github.com/w4exu-N4UH/RC-ARC/wiki
 
 ## Sidebar Navigation
 
@@ -142,3 +142,4 @@ See `todo.md` for current items:
 - Broadcastify feed only streams the 2m repeater (145.410 MHz), not the 70cm repeater
 - Internal links use `/pages/` for static pages and `/events/` for event pages
 - `.claude/` is in `.gitignore` — local Claude Code settings are not committed
+- **Last Updated date** — `content/_index.md` has a `#### Last Updated` section at the bottom. Update the date manually whenever significant changes are pushed to the site.

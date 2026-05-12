@@ -9,7 +9,9 @@
  *   3. Reads the "Email" tab in that sheet to get the recipient list
  *   4. Sends email notifications to those recipients
  *   5. Generates a filled PDF for membership applications
- *   6. Optionally posts to Discord
+ *   6. Posts to Discord
+ *
+ * A daily health check runs at noon and posts a 24-hour summary to Discord.
  *
  * SETUP: See form-automation-setup.md for full instructions.
  */
@@ -22,50 +24,59 @@
 // Each of these spreadsheets must have a tab called "Email" with
 // email addresses in column A, starting at row 2 (row 1 is the header).
 var FORM_ROUTING = {
+  // "Form Type" value must match the hidden Form Type field in each HTML form exactly.
   "Contact": {
-    spreadsheetId: "",  // TODO: Paste your Contact Us spreadsheet ID here
+    spreadsheetId: "",  // TODO: Paste the spreadsheet ID from the Contact Us Google Sheet URL
     subject: "RARS Website: New Contact Form Submission",
     generatePdf: false
   },
 
   "Membership Application": {
-    spreadsheetId: "",  // TODO: Paste your Membership spreadsheet ID here
+    spreadsheetId: "",  // TODO: Paste the spreadsheet ID from the Membership Google Sheet URL
     subject: "RARS Website: New Membership Application",
     generatePdf: true
   },
 
   "Elmer Request": {
-    spreadsheetId: "",  // TODO: Paste your Elmer Request spreadsheet ID here
+    spreadsheetId: "",  // TODO: Paste the spreadsheet ID from the Elmer Request Google Sheet URL
     subject: "RARS Website: New Elmer Request",
     generatePdf: false
   }
 };
 
-// Google Doc template ID for membership application PDF
-// Create a Google Doc template with {{placeholders}} - see setup guide
+// Google Doc template ID for membership application PDF.
+// Open the template doc and copy the ID from the URL:
+//   https://docs.google.com/document/d/PASTE_THIS_PART/edit
 var MEMBERSHIP_TEMPLATE_ID = "";  // TODO: Paste your Google Doc template ID here
 
-// Google Drive folder ID to save generated PDFs
-var PDF_FOLDER_ID = "";           // TODO: Paste your Drive folder ID here
+// Google Drive folder ID to save generated membership PDFs.
+// Open the folder in Drive and copy the ID from the URL:
+//   https://drive.google.com/drive/folders/PASTE_THIS_PART
+var PDF_FOLDER_ID = "";  // TODO: Paste your Drive folder ID here
 
-// From name shown in notification emails
+// From name shown in outgoing notification emails
 var FROM_NAME = "RARS Website";
 
-// Discord webhook URL (optional - leave empty to disable)
-var DISCORD_WEBHOOK_URL = "";
+// Discord webhook URL. In your Discord server:
+//   Server Settings → Integrations → Webhooks → New Webhook → Copy Webhook URL
+// Leave empty to disable Discord notifications.
+var DISCORD_WEBHOOK_URL = "";  // TODO: Paste your Discord webhook URL here
 
-// Name of the tab in the master sheet where SheetMonkey writes submissions
-var MASTER_SHEET_NAME = "Sheet1";
+// Name of the tab in the master SheetMonkey sheet where submissions are written.
+// Check the tab name at the bottom of your master Google Sheet.
+var MASTER_SHEET_NAME = "Sheet1";  // TODO: Update if your tab is named differently
 
-// Name of the tab in each destination spreadsheet that holds email addresses
-var EMAIL_TAB_NAME = "Email";
+// Name of the tab in each destination sheet that holds notification email addresses.
+// Each destination sheet must have a tab with this exact name.
+// Row 1 = "Email" header, Row 2+ = one email address per row.
+var EMAIL_TAB_NAME = "Email";  // TODO: Update if your tab is named differently
 
 // ============================================================================
-// TRIGGER SETUP - Run this function ONCE to install the trigger
+// TRIGGER SETUP - Run these functions ONCE to install triggers
 // ============================================================================
 
 function installTrigger() {
-  // Remove any existing triggers to avoid duplicates
+  // Remove any existing onChange triggers to avoid duplicates
   var triggers = ScriptApp.getProjectTriggers();
   for (var i = 0; i < triggers.length; i++) {
     if (triggers[i].getHandlerFunction() === "onSheetChange") {
@@ -78,7 +89,25 @@ function installTrigger() {
     .onChange()
     .create();
 
-  Logger.log("Trigger installed successfully.");
+  Logger.log("onChange trigger installed successfully.");
+}
+
+function installDailyTrigger() {
+  // Remove any existing daily health check triggers to avoid duplicates
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === "dailyHealthCheck") {
+      ScriptApp.deleteTrigger(triggers[i]);
+    }
+  }
+
+  ScriptApp.newTrigger("dailyHealthCheck")
+    .timeBased()
+    .everyDays(1)
+    .atHour(12)
+    .create();
+
+  Logger.log("Daily health check trigger installed (noon every day).");
 }
 
 // ============================================================================
@@ -86,6 +115,15 @@ function installTrigger() {
 // ============================================================================
 
 function onSheetChange(e) {
+  // Acquire a lock to prevent concurrent execution.
+  // When we set "Notified" = TRUE, it triggers another onChange event.
+  // Without a lock, the second run could overlap and send duplicates.
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(5000)) {
+    Logger.log("Could not acquire lock. Another instance is running. Exiting.");
+    return;
+  }
+
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var masterSheet = ss.getSheetByName(MASTER_SHEET_NAME);
@@ -98,84 +136,184 @@ function onSheetChange(e) {
     var lastRow = masterSheet.getLastRow();
     if (lastRow < 2) return;
 
-    // Read headers and the newest row
+    // Read headers
     var lastCol = masterSheet.getLastColumn();
     var headers = masterSheet.getRange(1, 1, 1, lastCol).getValues()[0];
 
     // Find or create the "Notified" column
     var notifiedCol = headers.indexOf("Notified") + 1; // 1-indexed
     if (notifiedCol === 0) {
-      // Column doesn't exist yet — add it
       notifiedCol = lastCol + 1;
       masterSheet.getRange(1, notifiedCol).setValue("Notified").setFontWeight("bold");
       headers.push("Notified");
+      SpreadsheetApp.flush(); // Ensure the column is written before continuing
     }
 
-    // Check if this row was already notified
-    var notifiedValue = masterSheet.getRange(lastRow, notifiedCol).getValue().toString().trim().toUpperCase();
-    if (notifiedValue === "TRUE" || notifiedValue === "YES") {
-      Logger.log("Row " + lastRow + " already notified. Skipping.");
-      return;
-    }
-
-    var rowData = masterSheet.getRange(lastRow, 1, 1, lastCol).getValues()[0];
-
-    // Build a key-value object from the row
-    var submission = {};
-    for (var i = 0; i < headers.length; i++) {
-      var header = headers[i].toString().trim();
-      var value = rowData[i] !== undefined ? rowData[i].toString().trim() : "";
-      if (header && header !== "Notified") {
-        submission[header] = value;
+    // Scan ALL rows for any that haven't been notified yet (not just the last row).
+    // This catches submissions that were missed or added in quick succession.
+    for (var row = 2; row <= lastRow; row++) {
+      var notifiedValue = masterSheet.getRange(row, notifiedCol).getValue().toString().trim().toUpperCase();
+      if (notifiedValue === "TRUE" || notifiedValue === "YES") {
+        continue; // Already processed
       }
+
+      // Mark as notified FIRST to prevent duplicates from concurrent triggers
+      masterSheet.getRange(row, notifiedCol).setValue("TRUE");
+      SpreadsheetApp.flush();
+
+      var rowData = masterSheet.getRange(row, 1, 1, lastCol).getValues()[0];
+
+      // Build a key-value object from the row
+      var submission = {};
+      for (var i = 0; i < headers.length; i++) {
+        var header = headers[i].toString().trim();
+        var value = rowData[i] !== undefined ? rowData[i].toString().trim() : "";
+        if (header && header !== "Notified") {
+          submission[header] = value;
+        }
+      }
+
+      // Skip if this row looks empty
+      if (!submission["Name"] && !submission["Email"]) continue;
+
+      // Determine the form type
+      var formType = submission["Form Type"] || "";
+      var routing = FORM_ROUTING[formType];
+
+      if (!routing) {
+        Logger.log("Row " + row + ": Unknown form type '" + formType + "'. Skipping.");
+        sendDiscordError(formType, submission, row);
+        continue;
+      }
+
+      // --- Step 1: Copy row to the destination spreadsheet ---
+      var destLastRow = copyToDestinationSheet(routing.spreadsheetId, headers, rowData);
+
+      // --- Step 2: Send Discord notification (always fires, regardless of email config) ---
+      sendDiscordNotification(formType, submission);
+
+      // --- Step 3: Read recipients from the "Email" tab in the destination sheet ---
+      var recipients = getRecipientsFromSheet(routing.spreadsheetId);
+
+      if (recipients.length === 0) {
+        Logger.log("Row " + row + ": No recipients in Email tab for " + formType + ". Skipping email.");
+        markDestinationNotified(routing.spreadsheetId, destLastRow);
+        continue;
+      }
+
+      // --- Step 4: Generate PDF (membership only) ---
+      var pdfBlob = null;
+      if (routing.generatePdf && MEMBERSHIP_TEMPLATE_ID) {
+        pdfBlob = generateMembershipPdf(submission);
+      }
+
+      // --- Step 5: Send email notifications ---
+      var sheetUrl = "https://docs.google.com/spreadsheets/d/" + routing.spreadsheetId;
+      sendEmailNotifications(recipients, routing.subject, formType, submission, pdfBlob, sheetUrl);
+
+      // --- Step 6: Mark destination sheet as notified ---
+      markDestinationNotified(routing.spreadsheetId, destLastRow);
+
+      Logger.log("Processed row " + row + ": " + formType + " from " + (submission["Name"] || "unknown") +
+                 " → notified: " + recipients.join(", "));
     }
-
-    // Skip if this row looks empty
-    if (!submission["Name"] && !submission["Email"]) return;
-
-    // Determine the form type
-    var formType = submission["Form Type"] || "";
-    var routing = FORM_ROUTING[formType];
-
-    if (!routing) {
-      Logger.log("Unknown form type: '" + formType + "'. Skipping.");
-      return;
-    }
-
-    // --- Step 1: Copy row to the destination spreadsheet ---
-    var destLastRow = copyToDestinationSheet(routing.spreadsheetId, headers, rowData);
-
-    // --- Step 2: Read recipients from the "Email" tab in the destination sheet ---
-    var recipients = getRecipientsFromSheet(routing.spreadsheetId);
-
-    if (recipients.length === 0) {
-      Logger.log("No recipients found in Email tab for " + formType + ". Skipping notifications.");
-      return;
-    }
-
-    // --- Step 3: Generate PDF (membership only) ---
-    var pdfBlob = null;
-    if (routing.generatePdf && MEMBERSHIP_TEMPLATE_ID) {
-      pdfBlob = generateMembershipPdf(submission);
-    }
-
-    // --- Step 4: Send email notifications ---
-    var sheetUrl = "https://docs.google.com/spreadsheets/d/" + routing.spreadsheetId;
-    sendEmailNotifications(recipients, routing.subject, formType, submission, pdfBlob, sheetUrl);
-
-    // --- Step 5: Send Discord notification (optional) ---
-    sendDiscordNotification(formType, submission);
-
-    // --- Step 6: Mark as notified on both sheets ---
-    masterSheet.getRange(lastRow, notifiedCol).setValue("TRUE");
-    markDestinationNotified(routing.spreadsheetId, destLastRow);
-
-    Logger.log("Processed " + formType + " from " + (submission["Name"] || "unknown") +
-               " → notified: " + recipients.join(", "));
 
   } catch (error) {
     Logger.log("Error in onSheetChange: " + error.toString());
+  } finally {
+    lock.releaseLock();
   }
+}
+
+// ============================================================================
+// DAILY HEALTH CHECK
+// ============================================================================
+
+/**
+ * Runs at noon every day. Posts a Discord message confirming the script is
+ * running and summarizing form submissions from the last 24 hours.
+ */
+function dailyHealthCheck() {
+  if (!DISCORD_WEBHOOK_URL) return;
+
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var masterSheet = ss.getSheetByName(MASTER_SHEET_NAME);
+  var masterUrl = ss.getUrl();
+
+  var summary = { total: 0, byType: {} };
+  var recentNames = [];
+
+  if (masterSheet && masterSheet.getLastRow() >= 2) {
+    var lastCol = masterSheet.getLastColumn();
+    var headers = masterSheet.getRange(1, 1, 1, lastCol).getValues()[0];
+    var data = masterSheet.getRange(2, 1, masterSheet.getLastRow() - 1, lastCol).getValues();
+
+    var cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 1); // 24 hours ago
+
+    var submittedCol = headers.indexOf("Submitted");
+    var nameCol = headers.indexOf("Name");
+    var formTypeCol = headers.indexOf("Form Type");
+
+    for (var i = 0; i < data.length; i++) {
+      var row = data[i];
+      var submittedRaw = submittedCol >= 0 ? row[submittedCol] : null;
+      var submittedDate = submittedRaw ? new Date(submittedRaw) : null;
+
+      if (!submittedDate || submittedDate < cutoff) continue;
+
+      summary.total++;
+      var formType = formTypeCol >= 0 ? row[formTypeCol].toString().trim() : "Unknown";
+      summary.byType[formType] = (summary.byType[formType] || 0) + 1;
+
+      var name = nameCol >= 0 ? row[nameCol].toString().trim() : "";
+      if (name) recentNames.push(name + " (" + formType + ")");
+    }
+  }
+
+  var typeLines = [];
+  var typeEmojis = {
+    "Contact": "✉️",
+    "Membership Application": "📋",
+    "Elmer Request": "🎓"
+  };
+  for (var type in summary.byType) {
+    var emoji = typeEmojis[type] || "📄";
+    typeLines.push(emoji + " " + type + ": " + summary.byType[type]);
+  }
+  if (typeLines.length === 0) typeLines.push("No submissions in the last 24 hours.");
+
+  var description = "**Last 24 hours:** " + summary.total + " submission" + (summary.total !== 1 ? "s" : "") + "\n" +
+                    typeLines.join("\n");
+
+  if (recentNames.length > 0) {
+    description += "\n\n**Submitters:** " + recentNames.join(", ");
+  }
+
+  var payload = {
+    embeds: [{
+      title: "🟢 RARS Website — Daily Health Check",
+      description: description,
+      color: 3066993, // green
+      fields: [{
+        name: "Master Sheet",
+        value: "[View Submissions](" + masterUrl + ")",
+        inline: true
+      }],
+      footer: { text: "www.rowanars.net" },
+      timestamp: new Date().toISOString()
+    }]
+  };
+
+  var options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  };
+
+  var response = UrlFetchApp.fetch(DISCORD_WEBHOOK_URL, options);
+  Logger.log("Daily health check posted to Discord. Response: " + response.getResponseCode());
 }
 
 // ============================================================================
@@ -309,7 +447,7 @@ function generateMembershipPdf(submission) {
 
     copyDoc.saveAndClose();
 
-    // Convert the filled doc to PDF (same naming convention as the doc)
+    // Convert the filled doc to PDF
     var pdfBlob = DriveApp.getFileById(copyFile.getId()).getAs("application/pdf");
     pdfBlob.setName(copyName + ".pdf");
 
@@ -317,7 +455,7 @@ function generateMembershipPdf(submission) {
     if (PDF_FOLDER_ID) {
       var folder = DriveApp.getFolderById(PDF_FOLDER_ID);
       folder.createFile(pdfBlob);
-      Logger.log("PDF saved to Drive: " + pdfFileName);
+      Logger.log("PDF saved to Drive: " + copyName + ".pdf");
     }
 
     // Delete the temporary Google Doc copy
@@ -431,7 +569,7 @@ function buildHtmlBody(formType, submission, sheetUrl) {
 }
 
 // ============================================================================
-// DISCORD NOTIFICATIONS (Optional)
+// DISCORD NOTIFICATIONS
 // ============================================================================
 
 function sendDiscordNotification(formType, submission) {
@@ -448,10 +586,16 @@ function sendDiscordNotification(formType, submission) {
     }
   }
 
+  var typeColors = {
+    "Contact": 3447003,            // blue
+    "Membership Application": 15844367, // gold
+    "Elmer Request": 10181046      // purple
+  };
+
   var payload = {
     embeds: [{
       title: "New " + formType,
-      color: 1722250,
+      color: typeColors[formType] || 1722250,
       fields: fields,
       footer: { text: "www.rowanars.net" },
       timestamp: new Date().toISOString()
@@ -467,6 +611,44 @@ function sendDiscordNotification(formType, submission) {
 
   var response = UrlFetchApp.fetch(DISCORD_WEBHOOK_URL, options);
   Logger.log("Discord notification sent. Response: " + response.getResponseCode());
+}
+
+function sendDiscordError(formType, submission, row) {
+  if (!DISCORD_WEBHOOK_URL) return;
+
+  var fields = [];
+  for (var key in submission) {
+    if (submission[key]) {
+      fields.push({
+        name: key,
+        value: submission[key].substring(0, 1024),
+        inline: submission[key].length < 50
+      });
+    }
+  }
+
+  var unknownType = formType || "(empty)";
+
+  var payload = {
+    embeds: [{
+      title: "⚠️ Unrecognized Form Submission — Action Required",
+      description: "A submission arrived with Form Type **\"" + unknownType + "\"** which does not match any known form type (Contact, Membership Application, Elmer Request).\n\n**This submission was NOT saved to any destination sheet.** It is only in the master sheet (row " + row + "). Please review and file it manually.",
+      color: 15158332, // red
+      fields: fields,
+      footer: { text: "www.rowanars.net" },
+      timestamp: new Date().toISOString()
+    }]
+  };
+
+  var options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  };
+
+  var response = UrlFetchApp.fetch(DISCORD_WEBHOOK_URL, options);
+  Logger.log("Discord error notification sent. Response: " + response.getResponseCode());
 }
 
 // ============================================================================

@@ -15,7 +15,7 @@ GitHub is where our website's files are stored. Think of it like a shared folder
 ## Navigating the Repository
 
 A "repository" (or "repo") is like a project folder. Our website repo is at:
-**https://github.com/mrbell-dev/RC-ARC**
+**https://github.com/w4exu-N4UH/RC-ARC**
 
 ### Key Areas of the Repository
 

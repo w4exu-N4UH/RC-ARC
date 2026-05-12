@@ -17,3 +17,7 @@ hugo.linux
 
 # Claude Code local settings
 .claude/
+
+# Local scratch files with real credentials — never commit
+mrbell-google-scripts
+sheets-links.txt
