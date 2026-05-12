@@ -35,7 +35,7 @@ Listen for us on the N4UH repeaters:
 
 <form id="contactForm" action="https://api.sheetmonkey.io/form/cCtbQ5HZdYrQS7fVKN4dZV" method="post" class="mb-4">
   <div class="mb-3">
-    <label class="form-label">Name:</label>
+    <label class="form-label">Name: <span class="text-danger">*</span></label>
     <input type="text" name="Name" required class="form-control">
   </div>
   <div class="mb-3">
@@ -43,12 +43,12 @@ Listen for us on the N4UH repeaters:
     <input type="text" name="Call Sign" class="form-control" pattern="[A-Za-z]{1,2}[0-9][A-Za-z]{1,3}" title="Enter a valid amateur radio call sign (e.g., W4ABC, KJ4XYZ)">
   </div>
   <div class="mb-3">
-    <label class="form-label">Email:</label>
+    <label class="form-label">Email: <span class="text-danger">*</span></label>
     <input type="email" id="emailInput" name="Email" required class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address">
     <div id="emailFeedback" class="invalid-feedback">Please enter a valid email address.</div>
   </div>
   <div class="mb-3">
-    <label class="form-label">Message:</label>
+    <label class="form-label">Message: <span class="text-danger">*</span></label>
     <textarea name="Message" rows="5" required class="form-control"></textarea>
   </div>
   <input type="hidden" name="Form Type" value="Contact">
