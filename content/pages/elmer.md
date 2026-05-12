@@ -62,8 +62,9 @@ Fill out the form below and we'll connect you with an Elmer who can help.
 </div>
 
 <div class="mb-3">
-  <label class="form-label">Are you a RARS member?</label>
-  <select name="RARS Member" class="form-select">
+  <label class="form-label">Are you a RARS member? <span class="text-danger">*</span></label>
+  <select name="RARS Member" required class="form-select">
+    <option value="" disabled selected>Select one...</option>
     <option value="No">No</option>
     <option value="Yes">Yes</option>
     <option value="Interested in joining">Interested in joining</option>
