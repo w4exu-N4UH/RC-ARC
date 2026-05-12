@@ -4,6 +4,11 @@ date: 2026-02-09
 description: "An Elmer in ham radio is an experienced mentor who guides newcomers into the hobby"
 categories: [Resources]
 tags: [elmer, mentor, newham]
+menu:
+  main:
+    name: Elmer Program
+    weight: 7
+    pre: fa-graduation-cap
 ---
 
 ## What is an Elmer?

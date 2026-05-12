@@ -39,8 +39,9 @@ You can apply online using the form below, or [download the membership applicati
 
 <div class="row">
   <div class="col-md-6 mb-3">
-    <label class="form-label">License Class:</label>
-    <select name="License Class" class="form-select">
+    <label class="form-label">License Class: <span class="text-danger">*</span></label>
+    <select name="License Class" required class="form-select">
+      <option value="" disabled selected>Select one...</option>
       <option value="Not Licensed">Not Licensed (Yet!)</option>
       <option value="Technician">Technician</option>
       <option value="General">General</option>
@@ -48,8 +49,9 @@ You can apply online using the form below, or [download the membership applicati
     </select>
   </div>
   <div class="col-md-6 mb-3">
-    <label class="form-label">ARRL Member?</label>
-    <select name="ARRL Member" class="form-select">
+    <label class="form-label">ARRL Member? <span class="text-danger">*</span></label>
+    <select name="ARRL Member" required class="form-select">
+      <option value="" disabled selected>Select one...</option>
       <option value="No">No</option>
       <option value="Yes">Yes</option>
     </select>
@@ -63,13 +65,13 @@ You can apply online using the form below, or [download the membership applicati
 </div>
 
 <div class="mb-3">
-  <label class="form-label">Street Address:</label>
-  <input type="text" name="Street Address" class="form-control" placeholder="123 Main St">
+  <label class="form-label">Street Address: <span class="text-danger">*</span></label>
+  <input type="text" name="Street Address" required class="form-control" placeholder="123 Main St">
 </div>
 
 <div class="mb-3">
-  <label class="form-label">City, State, Zip:</label>
-  <input type="text" name="City State Zip" class="form-control" placeholder="Salisbury, NC 28144">
+  <label class="form-label">City, State, Zip: <span class="text-danger">*</span></label>
+  <input type="text" name="City State Zip" required class="form-control" placeholder="Salisbury, NC 28144">
 </div>
 
 <div class="row">
@@ -94,29 +96,29 @@ You can apply online using the form below, or [download the membership applicati
 </div>
 
 <div class="mb-3">
-  <label class="form-label">Describe your general operating habits:</label>
-  <textarea name="Operating Habits" rows="4" class="form-control" placeholder="Favorite bands, modes, time of day, hours/week, etc."></textarea>
+  <label class="form-label">Describe your general operating habits: <span class="text-danger">*</span></label>
+  <textarea name="Operating Habits" rows="4" required class="form-control" placeholder="Favorite bands, modes, time of day, hours/week, etc."></textarea>
 </div>
 
 <div class="mb-3">
-  <label class="form-label">What frequencies/modes, other than those listed above, are you able to use?</label>
-  <textarea name="Frequencies and Modes" rows="3" class="form-control" placeholder="Other frequencies and modes you are able to operate on..."></textarea>
+  <label class="form-label">What frequencies/modes, other than those listed above, are you able to use? <span class="text-danger">*</span></label>
+  <textarea name="Frequencies and Modes" rows="3" required class="form-control" placeholder="Other frequencies and modes you are able to operate on..."></textarea>
 </div>
 
 <div class="mb-3">
-  <label class="form-label">What are your capabilities/limitations in case you were called on for an emergency operation?</label>
-  <textarea name="Emergency Capabilities" rows="4" class="form-control" placeholder="Describe your emergency communication capabilities, equipment, and any limitations..."></textarea>
+  <label class="form-label">What are your capabilities/limitations in case you were called on for an emergency operation? <span class="text-danger">*</span></label>
+  <textarea name="Emergency Capabilities" rows="4" required class="form-control" placeholder="Describe your emergency communication capabilities, equipment, and any limitations..."></textarea>
   <div class="form-text">Examples: HT, mobile rig, base station, portable antennas, power backup, availability, etc.</div>
 </div>
 
 <div class="mb-3">
-  <label class="form-label">Name three goals you have in Amateur Radio:</label>
-  <textarea name="Goals" rows="3" class="form-control" placeholder="What are your amateur radio goals?"></textarea>
+  <label class="form-label">Name three goals you have in Amateur Radio: <span class="text-danger">*</span></label>
+  <textarea name="Goals" rows="3" required class="form-control" placeholder="What are your amateur radio goals?"></textarea>
 </div>
 
 <div class="mb-3">
-  <label class="form-label">List, in order of enjoyment, three Amateur Radio activities you would like to do in the next six months:</label>
-  <textarea name="Planned Activities" rows="3" class="form-control" placeholder="What activities are you looking forward to?"></textarea>
+  <label class="form-label">List, in order of enjoyment, three Amateur Radio activities you would like to do in the next six months: <span class="text-danger">*</span></label>
+  <textarea name="Planned Activities" rows="3" required class="form-control" placeholder="What activities are you looking forward to?"></textarea>
 </div>
 
 ---
