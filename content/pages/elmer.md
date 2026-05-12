@@ -93,7 +93,7 @@ Fill out the form below and we'll connect you with an Elmer who can help.
 1. We'll review your request and get in touch via email
 2. You're welcome to attend our next meeting -- visitors are always welcome!
 
-Come to a meeting, check in on the [N4UH repeater](/pages/repeaters/) (145.410 MHz, 136.5 PL), or [contact us](/pages/contact/) to get connected with an Elmer.
+Come to a [meeting](/pages/meetings/), or check in on the [N4UH repeater](/pages/repeaters/) (145.410 MHz, 136.5 PL). For any other needs, feel free to [contact us](/pages/contact/).
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
