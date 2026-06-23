@@ -38,7 +38,7 @@ content/
 ├── submission.md             # Form thank you page
 ├── categories/_index.md      # Category listing
 ├── tags/_index.md            # Tag listing
-├── archives/index.html       # Archive listing
+├── archives/index.md         # Archive listing
 │
 ├── pages/                    # Static informational pages
 │   ├── about.md

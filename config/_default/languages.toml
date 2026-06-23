@@ -1,6 +1,6 @@
 [en]
-  languageName = "English"
-  languageCode = "en"
+  label = "English"
+  locale = "en"
   weight = 1
   title = "Rowan Amateur Radio Society"
   [en.params]
