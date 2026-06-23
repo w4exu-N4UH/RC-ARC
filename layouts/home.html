@@ -6,6 +6,9 @@
   </article>
 
   {{ $calEvents := where (where .Site.RegularPages ".Params.tags" "intersect" (slice "event-cal")) "Type" "events" }}
+  {{/* Also surface recurring (event-general) events that have a specific date set */}}
+  {{ $datedGeneral := where (where (where .Site.RegularPages ".Params.tags" "intersect" (slice "event-general")) "Type" "events") ".Params.event_date" "!=" nil }}
+  {{ $calEvents = $calEvents | union $datedGeneral }}
   {{ if $calEvents }}
   <div class="flex-grow-1 px-xl-1 mt-4">
     <h2 class="mb-3"><i class="fas fa-calendar-day me-2"></i>Upcoming Events</h2>
