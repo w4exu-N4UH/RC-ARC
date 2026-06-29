@@ -24,6 +24,7 @@ Whether you're a seasoned operator or have never touched a radio, come out and s
 Visitors are welcome to come out once operating begins Saturday afternoon.
 
 ## License Testing On Site
+### VE Testing Canceled 6/27/2026
 
 We will have **VE testing on site Saturday morning** for anyone looking to earn their first license or upgrade.
 
