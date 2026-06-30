@@ -24,6 +24,7 @@ The Rowan Amateur Radio Society remembers and honors our members who have become
 | N4QY | Larry Wright | 2026 |
 | KJ4TGS | Carl Cross | 2026 |
 | N4UH | Henry Elwell | 2007 |
+| WD4KJF | Fred McGinnis | 1995 |
 
 ---
 
