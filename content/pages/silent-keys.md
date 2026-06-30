@@ -21,6 +21,7 @@ The Rowan Amateur Radio Society remembers and honors our members who have become
 
 | Call Sign | Name | Year |
 |-----------|------|------|
+| N4QY | Larry Wright | 2026 |
 | KJ4TGS | Carl Cross | 2026 |
 
 ---
