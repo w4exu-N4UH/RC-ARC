@@ -9,6 +9,8 @@ event_date: "June 27-28, 2026"
 
 ## RARS 2026 Field Day
 
+[*Ham it up: Rowan radio society joins nat’l event*](https://www.salisburypost.com/2026/06/30/ham-it-up-rowan-radio-society-joins-natl-event/) Salisbury Post article by Janet Briggs
+
 ### Celebrating the Power and Possibility of Ham Radio
 
 Join the Rowan Amateur Radio Society for **ARRL Field Day 2026** -- a full weekend dedicated to the art and science of amateur radio. Field Day is amateur radio's largest on-air event, bringing together radio amateurs, hobbyists, students, and curious newcomers to set up stations, make contacts across the country, and demonstrate how hams communicate when traditional infrastructure is unavailable.
