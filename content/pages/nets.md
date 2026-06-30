@@ -18,7 +18,8 @@ A guide to amateur radio nets in and around Rowan County, NC. VHF/UHF nets liste
 
 | Net Name | Frequency | Day | Time |
 |----------|-----------|-----|------|
-| Rowan County ARES Training Net | 145.410 MHz -0.600 (136.5 PL) | Wednesday | |
+| Mid Carolina Radio Group Net | 443.250 MHz +5.00 MHz (136.5 TSQL) | Monday | 20:00 ET |
+| Rowan County ARES Training Net | 145.410 MHz -0.600 (136.5 PL) | Wednesday | 20:00 ET |
 
 ---
 
