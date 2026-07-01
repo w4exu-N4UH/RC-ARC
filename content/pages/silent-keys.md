@@ -25,7 +25,8 @@ The Rowan Amateur Radio Society remembers and honors our members who have become
 | KJ4TGS | Carl Cross | 2026 |
 | N4UH | Henry Elwell | 2007 |
 | W4CZJ | Michael Culbreth | 2023 |
-| W3OHV | Charles Scheid | 2022-07 |
+| W3OHV | Charles Scheid | 2022 |
+| KB4QE | Dick Jones | 2020 |
 | WD4KJF | Fred McGinnis | 1995 |
 
 ---
