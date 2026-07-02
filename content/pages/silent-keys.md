@@ -30,6 +30,9 @@ The Rowan Amateur Radio Society remembers and honors our members who have become
 | K4MEW | Marvin Weant | 2018-07 |
 | W4TMR | Charlie Klutz | 2018 |
 | KA4CMC | Jackie | 2017-2018 |
+| W4FQV | Nelson Large (see Harmonics 368) | 2017 |
+| K4REQ | Bob Rector (see Harmonics 367) | 2017 |
+
 | WD4KJF | Fred McGinnis | 1995 |
 
 ---
