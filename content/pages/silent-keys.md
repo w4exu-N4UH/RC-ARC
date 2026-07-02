@@ -27,6 +27,9 @@ The Rowan Amateur Radio Society remembers and honors our members who have become
 | W4CZJ | Michael Culbreth | 2023 |
 | W3OHV | Charles Scheid | 2022 |
 | KB4QE | Dick Jones | 2020 |
+| K4MEW | Marvin Weant | 2018-07 |
+| W4TMR | Charlie Klutz | 2018 |
+| KA4CMC | Jackie | 2017-2018 |
 | WD4KJF | Fred McGinnis | 1995 |
 
 ---
