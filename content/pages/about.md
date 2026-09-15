@@ -25,16 +25,16 @@ RARS meets on the **2nd Monday of each month** at **7:00 PM** at:
 ## Officers
 
 - **President:** David Jackman **N7WOY**
-- **Vice President:** Vacant <!-- Michael Zinicola WD4PVS -->
+- **Vice President:** William Breinich **KR4DRH**
 - **Secretary:** Doug Bowers **KR4HIL**
 - **Treasurer:** James "Jim" Russell **KR4FHI**
 
-## Repeaters
+## [Repeaters](/pages/repeaters/)
 
-RARS maintains two repeaters under the N4UH call sign:
+RARS maintains two repeaters under the N4UH call sign.
 
-- **2m:** 145.410 MHz (-0.600 MHz, 136.5 Hz tone)
-- **70cm:** 443.250 MHz (+5.000 MHz, 136.5 Hz tone)
+<!-- - **2m:** 145.410 MHz (-0.600 MHz, 136.5 Hz tone)
+- **70cm:** 443.250 MHz (+5.000 MHz, 136.5 Hz tone -->
 
 ## Contact
 <!-- this is redundant. We have the `contact.md` page. -JR -->
