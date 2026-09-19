@@ -1,6 +1,6 @@
 ---
 title: "Local Repeaters"
-date: 2026-02-04
+date: 2026-09-19
 description: "Quick reference guide to amateur radio repeaters in and around Rowan County, NC"
 categories: [Resources]
 tags: [repeaters, local, reference]
@@ -22,18 +22,19 @@ A quick reference guide to amateur radio repeaters in and around Rowan County, N
 | 2m | 145.410 MHz | -0.600 | 136.5 PL | club repeater, ARES primary |
 | 70cm | 443.250 MHz | +5.000 | 136.5 TSQL | club repeater |
 
-### [KU4PT](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=190) - Ralph Mowery and Trustees (Cleveland, NC)
+### [KU4PT](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=190) 
+The *Barber Junction Repeater Association* (Cleveland, NC)
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
-| 1.25m | 224.76 | -1.6 | | since late 1978. This repeater is relatively unknown! |
-| 2m | 146.73 | -0.600 | 94.8 PL | One of the oldest FM repeaters in the region. Located on Young's Mountain (11/1970) |
+| 1.25m | 224.76 MHz | -1.6 | | since late 1978. This repeater is relatively unknown! |
+| 2m | 146.73 MHz | -0.600 | 94.8 PL | One of the oldest FM repeaters in the region. Located on Young's Mountain (11/1970) |
 
 ### BRANet Bi-State-Radio-Amateur-Network
 #### Cleveland, NC; Granite Quarry, NC; etc.
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
-| 70 cm | 443.5 | +5.0 | 151.4 TSQL | [KR4BHY](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=24677). Located on Young's Mountain. |
-| 70 cm | 444.4 | +5.0 | 151.4 TSQL | [KD4OWV](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=24676). Located at Al's Knob in Granite Quarry. |
+| 70 cm | 443.5 MHz | +5.0 | 151.4 TSQL | [KR4BHY](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=24677). Located on Young's Mountain. |
+| 70 cm | 444.4 MHz | +5.0 | 151.4 TSQL | [KD4OWV](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=24676). Located at Al's Knob in Granite Quarry. |
 
 This a newer radio linked repeater network. The repeaters are still under development. There may be other complimentary repeaters near Gastonia, NC and Lancaster, SC which are not yet published due to coordination and other issues; these are believed to be in the 2m band -- possibly 145.45 -0.600 Mhz and 145.21 -0.600 MHz offset, respectively. The network uses the same tones uniformly.
 
@@ -42,17 +43,17 @@ The network may eventually grow to a 5th repeater. Advertised to have robust pow
 ### [KB2AZG](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=20422) (Salisbury, NC)
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
-| 2m | 145.21 | -0.600 | 100 TSQL | Andy Kaufman's Repeater |
+| 2m | 145.21 MHz | -0.600 | 100 TSQL | Andy Kaufman's Repeater |
 
 ### [K4CH](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=12785) DMR Repeater
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
-| 70 cm | 443.7 | +5.0 | DMR | BrandMeister Network...FULL-TIME LINK to W4SNA, ... |
+| 70 cm | 443.7 MHz | +5.0 | DMR | BrandMeister Network...FULL-TIME LINK to W4SNA, ... |
 
 ### [W4SNA 6m](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=6751) on Young's Mountain, Cleveland, NC
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
-| 6m | 53.31 | -1.0 | 100 TSQL | Links Full-time to 53.95000 (W4SNA) at King, Sauratown Mtn, NC |
+| 6m | 53.31 MHz | -1.0 | 100 TSQL | Links Full-time to 53.95000 (W4SNA) at King, Sauratown Mtn, NC |
 
 (Young's Mountain may be marked as being in Cleveland, Barber Junction, or Salisbury. It's most closely located in the Barber Junction community. It is the highest land point in Rowan County.)
 
