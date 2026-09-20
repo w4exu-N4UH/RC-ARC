@@ -23,7 +23,7 @@ A quick reference guide to amateur radio repeaters in and around Rowan County, N
 | 70cm | 443.250 MHz | +5.000 | 136.5 TSQL | club repeater |
 
 ### [KU4PT](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=190) 
-The *Barber Junction Repeater Association* (Cleveland, NC)
+The *Barber Junction Repeater Association* (Cleveland, NC) throigb Ralph, J.C., et al
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
 | 1.25m | 224.76 MHz | -1.6 | | since late 1978. This repeater is relatively unknown! |
@@ -33,7 +33,7 @@ The *Barber Junction Repeater Association* (Cleveland, NC)
 #### Cleveland, NC; Granite Quarry, NC; etc.
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
-| 70 cm | 443.5 MHz | +5.0 | 151.4 TSQL | [KR4BHY](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=24677). Located on Young's Mountain. |
+| 70 cm | ~~443.5 MHz~~ | +5.0 | 151.4 TSQL | [KR4BHY](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=24677). Located on Young's Mountain. The repeater took a lightning strike around September 19, 2026. The antenna will need to be replaced. It is out of service until further notice. |
 | 70 cm | 444.4 MHz | +5.0 | 151.4 TSQL | [KD4OWV](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=24676). Located at Al's Knob in Granite Quarry. |
 
 This a newer radio linked repeater network. The repeaters are still under development. There may be other complimentary repeaters near Gastonia, NC and Lancaster, SC which are not yet published due to coordination and other issues; these are believed to be in the 2m band -- possibly 145.45 -0.600 Mhz and 145.21 -0.600 MHz offset, respectively. The network uses the same tones uniformly.
@@ -93,7 +93,7 @@ The network may eventually grow to a 5th repeater. Advertised to have robust pow
 ### [W4NSW](https://www.repeaterbook.com/repeaters/details.php?state_id=37&ID=22454)  (Mocksville)
 | Band | Frequency | Offset | Tone | Notes |
 |------|-----------|--------|------|-------|
-| 70 cm| 443.175 | +5.0 | 85.4 TSQL | Newer repeater (2026) |
+| 70 cm| 443.175 MHz | +5.0 | 85.4 TSQL | Newer repeater (2026) |
 
 ---
 
