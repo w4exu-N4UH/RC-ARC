@@ -28,7 +28,7 @@ The Rowan Amateur Radio Society remembers and honors our members who have become
 | KB4QE | Dick Jones | 2020 |
 | K4MEW | Marvin Weant | 2018-07 |
 | W4TMR | Charlie Klutz | 2018 |
-| KA4CMC | Jackie | 2017-2018 |
+| KA4CMC | [Gilmer Jackson "Jackie" Bost](https://forums.qrz.com/index.php?threads/ka4cmc-jackie-bost-sk-north-carolina.591771/) | b. 1946 d. 2017-12 |
 | W4FQV | Nelson Large (see _Harmonics_ 368) | 2017 |
 | K4REQ | Bob Rector (see _Harmonics_ 367) | 2017 |
 | AB3X | Drax Felton (see _Harmonics_ 364) | 2016 |
