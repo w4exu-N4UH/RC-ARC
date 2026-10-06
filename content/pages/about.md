@@ -29,17 +29,14 @@ RARS meets on the **2nd Monday of each month** at **7:00 PM** at:
 - **Secretary:** Doug Bowers **KR4HIL**
 - **Treasurer:** James "Jim" Russell **KR4FHI**
 
-## [Repeaters](/pages/repeaters/)
+## [Repeaters](/pages/repeaters/#n4uh-repeater-frequencies)
 
 RARS maintains two repeaters under the N4UH call sign.
 
 <!-- - **2m:** 145.410 MHz (-0.600 MHz, 136.5 Hz tone)
 - **70cm:** 443.250 MHz (+5.000 MHz, 136.5 Hz tone -->
 
-## Contact
+## [Contact](/pages/contact)
 <!-- this is redundant. We have the `contact.md` page. -JR -->
-
-- **Reach Us:** [Contact Form](/pages/contact/)
-- **Phone:** (704) 433-7371
 
 Visitors are always welcome at our meetings!

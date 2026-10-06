@@ -26,10 +26,11 @@ We meet on the 2nd Monday of each month at 7:00 PM. Visitors are always welcome!
 
 ## On the Air
 
-Listen for us on the N4UH repeaters:
-
+Listen for us on the N4UH [repeaters](pages/repeaters)
+<!-- 
 - **2m:** 145.410 MHz, -0.600 offset, 136.5 PL
 - **70cm:** 443.250 MHz, +5.000 offset, 136.5 PL
+-->
 
 ## Contact Form
 
