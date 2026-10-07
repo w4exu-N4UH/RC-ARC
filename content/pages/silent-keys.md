@@ -1,6 +1,6 @@
 ---
 title: "Silent Keys"
-date: 2026-07-27
+date: 2026-10-01
 description: "In memory of RARS members who have become Silent Keys"
 categories: [Club Info]
 tags: [silent-keys, memorial]
@@ -21,6 +21,7 @@ The Rowan Amateur Radio Society remembers and honors our members who have become
 
 | Call Sign | Name | Year |
 |-----------|------|------|
+| K4PXU | [Derwood S. Puckett](https://www.silentkeyhq.com/main.php?p=bin/NSKALookup.php&dlnk=&call=K4PXU&uid=0481791391067338) (See *Harmonics* 475) | 1933 - 2026 |
 | N4QY | [Larry Wright](https://www.silentkeyhq.com/main.php?p=bin/NSKALookup.php&call=N4QY&uid=0301785356442210) | <div style="min-width: 20px; white-space: normal;">b. 1940-03 - d. 2026-05</div> |
 | KJ4TGS | Carl Stanton Cross | 2026 |
 | W4CZJ | Michael Culbreth | 2023 |
